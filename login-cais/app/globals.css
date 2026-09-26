@@ -1,26 +1,320 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --purple: #7C5CFF;
+  --purple-dark: #5B3FD4;
+  --green: #10B981;
+  --ink: #14161F;
+  --mist: #F6F7FB;
+  --white: #FFFFFF;
+  --gray: #6B7280;
+  --border: #E2E4EA;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Archivo", sans-serif;
+  background: var(--mist);
+  color: var(--ink);
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(124, 92, 255, 0.12),
+      transparent 30%
+    ),
+    var(--mist);
+}
+
+.login-container {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.brand-symbol {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--purple);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-symbol::before {
+  content: "";
+  width: 25px;
+  height: 18px;
+  border: 4px solid white;
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  transform: translateY(3px);
+}
+
+.brand-symbol span {
+  position: absolute;
+  width: 22px;
+  height: 4px;
+  background: white;
+  border-radius: 5px;
+  bottom: 11px;
+}
+
+.brand h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 27px;
+  letter-spacing: 2px;
+}
+
+.brand p {
+  font-size: 11px;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.login-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 38px;
+  box-shadow:
+    0 20px 50px rgba(20, 22, 31, 0.08);
+}
+
+.login-header {
+  margin-bottom: 30px;
+}
+
+.login-header h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 27px;
+  margin-bottom: 9px;
+}
+
+.login-header p {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  color: var(--ink);
+  background: white;
+  transition: 0.2s;
+}
+
+.form-group input::placeholder {
+  color: #A4A8B3;
+}
+
+.form-group input:focus {
+  border-color: var(--purple);
+  box-shadow:
+    0 0 0 3px rgba(124, 92, 255, 0.12);
+}
+
+.password-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.forgot-password {
+  border: none;
+  background: transparent;
+  color: var(--purple-dark);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 75px;
+}
+
+.show-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: var(--purple-dark);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================
+   ERRO
+========================= */
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 9px;
+  background: #FEF2F2;
+  color: #B42318;
+  font-size: 13px;
+}
+
+.error-message span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FEE4E2;
+  font-weight: 700;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+
+.login-button {
+  width: 100%;
+  height: 49px;
+  border: none;
+  border-radius: 10px;
+  background: var(--purple);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.login-button:hover {
+  background: var(--purple-dark);
+  transform: translateY(-1px);
+}
+
+.login-button:focus-visible {
+  outline: 3px solid rgba(124, 92, 255, 0.3);
+  outline-offset: 2px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.login-footer {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 25px;
+  font-size: 13px;
+  color: var(--gray);
+}
+
+.login-footer button {
+  border: none;
+  background: transparent;
+  color: var(--purple-dark);
+  font-weight: 600;
+}
+
+/* =========================
+   COPYRIGHT
+========================= */
+
+.copyright {
+  text-align: center;
+  margin-top: 25px;
+  color: #9CA0AA;
+  font-size: 11px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 520px) {
+
+  .login-page {
+    padding: 25px 16px;
+  }
+
+  .login-card {
+    padding: 26px 22px;
+    border-radius: 16px;
+  }
+
+  .login-header h2 {
+    font-size: 23px;
+  }
+
+  .brand {
+    margin-bottom: 22px;
+  }
+
+  .brand-symbol {
+    width: 43px;
+    height: 43px;
+  }
 }
