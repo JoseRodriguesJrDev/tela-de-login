@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Image from "next/image";
+import logoCais from "../imagens/logo_cais.png";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -18,9 +20,6 @@ export default function Login() {
       return;
     }
 
-    // Futuramente:
-    // Aqui será feita a chamada para a API do CAIS.
-
     console.log({
       email,
       senha,
@@ -31,17 +30,17 @@ export default function Login() {
     <main className="login-page">
       <section className="login-container">
 
-        {/* Logo */}
-        <div className="brand">
-          <div className="brand-symbol">
-            <span></span>
-          </div>
+  <div className="brand">
+  <Image
+    src={logoCais}
+    alt="Logo CAIS"
+    className="logo"
+  />
 
-          <div>
-            <h1>CAIS</h1>
-            <p>onde pessoas, empresas e projetos atracam</p>
-          </div>
-        </div>
+  <div>
+    <p>onde pessoas, empresas e projetos atracam</p>
+  </div>
+</div>
 
         {/* Card */}
         <div className="login-card">
